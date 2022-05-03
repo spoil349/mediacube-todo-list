@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-main>
+    <v-main class="d-flex justify-center align-center">
       <router-view />
     </v-main>
   </v-app>
@@ -11,3 +11,9 @@ export default {
   name: "App",
 };
 </script>
+
+<style lang="scss" scoped>
+.v-main {
+  background: $main-background;
+}
+</style>

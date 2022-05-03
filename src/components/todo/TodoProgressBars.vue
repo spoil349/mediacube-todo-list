@@ -1,10 +1,10 @@
 <template>
-  <div class="progress-bars"></div>
+  <div class="todo-progress-bars"></div>
 </template>
 
 <script>
 export default {
-  name: "ProgressBars",
+  name: "TodoProgressBars",
 };
 </script>
 
