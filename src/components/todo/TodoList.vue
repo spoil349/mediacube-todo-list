@@ -1,18 +1,24 @@
 <template>
   <div class="todo-list">
     <v-list class="todo-list__items pa-0 overflow-y-auto" max-height="85">
-      <TodoTask v-for="task in tasks" :key="task.id" :item="task" />
+      <draggable v-model="tasks">
+        <transition-group>
+          <TodoTask v-for="task in tasks" :key="task.key" :item="task" />
+        </transition-group>
+      </draggable>
     </v-list>
   </div>
 </template>
 
 <script>
 import TodoTask from "./TodoTask.vue";
+import draggable from "vuedraggable";
 
 export default {
   name: "TodoList",
   components: {
     TodoTask,
+    draggable,
   },
   data() {
     return {

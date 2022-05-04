@@ -33,8 +33,5 @@ export default {
       color: $muted;
     }
   }
-
-  &__btn {
-  }
 }
 </style>
