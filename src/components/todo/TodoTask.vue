@@ -1,7 +1,12 @@
 <template>
   <v-hover v-if="!editingMode" v-slot="{ hover }">
     <v-list-item class="todo-item">
-      <v-btn :ripple="false" class="todo-item__hidden-btn" icon v-if="hover">
+      <v-btn
+        :ripple="false"
+        class="todo-item__hidden-btn handle"
+        icon
+        v-if="hover"
+      >
         <v-icon :ripple="false">mdi-drag-vertical</v-icon>
       </v-btn>
       <v-list-item-action class="my-0 mr-2">

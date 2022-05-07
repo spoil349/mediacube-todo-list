@@ -1,7 +1,7 @@
 <template>
   <div class="todo-list">
     <v-list class="todo-list__items pa-0 overflow-y-auto" max-height="85">
-      <draggable v-model="tasks">
+      <draggable handle=".handle" v-model="tasks">
         <transition-group>
           <TodoTask v-for="task in tasks" :key="task.key" :item="task" />
         </transition-group>
