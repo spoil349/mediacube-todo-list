@@ -2,9 +2,9 @@
   <v-col>
     <v-card elevation="0" class="todo px-35 py-8 ma-auto rounded-xl white">
       <Logo class="mb-12" />
-      <div class="todo-title mb-13 text-center">
-        <h3>Today I need to</h3>
-      </div>
+      <v-card-title class="todo__title mb-13 text-center">
+        Today I need to
+      </v-card-title>
       <TodoInput class="mb-10 px-5" />
       <TodoList class="mb-8" />
       <v-container class="todo__progress-container px-5 py-0">
@@ -45,15 +45,15 @@ export default {
 .todo {
   width: 730px;
 
+  &__title {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 29px;
+    letter-spacing: -0.02em;
+  }
+
   &__progress-col {
     flex: 0 1 calc(50% - 15px);
   }
-}
-
-.todo-title {
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 29px;
-  letter-spacing: -0.02em;
 }
 </style>
