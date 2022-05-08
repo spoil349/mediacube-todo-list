@@ -7,7 +7,16 @@
       </div>
       <TodoInput class="mb-10 px-5" />
       <TodoList class="mb-8" />
-      <TodoProgressBars class="px-5" />
+      <v-container class="todo__progress-container px-5 py-0">
+        <v-row class="todo__progress-row no-gutters justify-space-between">
+          <v-col class="todo__progress-col">
+            <ProgressInfo />
+          </v-col>
+          <v-col class="todo__progress-col">
+            <ProgressInfo />
+          </v-col>
+        </v-row>
+      </v-container>
       <TodoButtons />
     </v-card>
   </v-col>
@@ -17,7 +26,7 @@
 import Logo from "@/components/Logo";
 import TodoInput from "@/components/todo/TodoInput";
 import TodoList from "@/components/todo/TodoList";
-import TodoProgressBars from "@/components/todo/TodoProgressBars";
+import ProgressInfo from "@/components/ProgressInfo";
 import TodoButtons from "@/components/todo/TodoButtons";
 
 export default {
@@ -26,7 +35,7 @@ export default {
     Logo,
     TodoInput,
     TodoList,
-    TodoProgressBars,
+    ProgressInfo,
     TodoButtons,
   },
 };
@@ -35,6 +44,10 @@ export default {
 <style lang="scss" scoped>
 .todo {
   width: 730px;
+
+  &__progress-col {
+    flex: 0 1 calc(50% - 15px);
+  }
 }
 
 .todo-title {
