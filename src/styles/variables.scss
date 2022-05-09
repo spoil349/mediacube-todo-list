@@ -22,10 +22,14 @@ $main-background:
 $btn-text-transform: capitalize;
 $spacers-steps: 35 !default;
 
+$middle-transparent-coeff: 0.1;
+$high-transparent-coeff: 0.05;
+
 $black: #202427;
 $blue-primary: #2578F4;
 $light-gray: #C7CCD1;
-$transparent-gray: rgba(#2024271A, .1);
+$middle-transparent-black: rgba($black, $middle-transparent-coeff);
+$high-transparent-black: rgba($black, $high-transparent-coeff);
 $muted: rgba(black, .5);
 
 @mixin small-scrollbar {
@@ -34,7 +38,7 @@ $muted: rgba(black, .5);
     }
 
     &::-webkit-scrollbar-thumb {
-        background-color: $transparent-gray;
+        background-color: $middle-transparent-black;
         border-radius: 8px;
     }
 };

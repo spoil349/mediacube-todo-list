@@ -10,10 +10,10 @@
       <v-container class="todo__progress-container px-5 py-0">
         <v-row class="todo__progress-row no-gutters justify-space-between">
           <v-col class="todo__progress-col">
-            <ProgressInfo />
+            <ProgressInfo :indicatorColor="'purple'" />
           </v-col>
           <v-col class="todo__progress-col">
-            <ProgressInfo />
+            <ProgressInfo :indicatorColor="'pink'" />
           </v-col>
         </v-row>
       </v-container>
