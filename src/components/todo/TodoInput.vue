@@ -5,7 +5,11 @@
       type="text"
       placeholder="Type something..."
     />
-    <v-btn elevation="0" height="100%" class="todo-input__btn primary">
+    <v-btn
+      class="todo-input__btn primary rounded-lg"
+      elevation="0"
+      height="100%"
+    >
       Submit
     </v-btn>
   </div>

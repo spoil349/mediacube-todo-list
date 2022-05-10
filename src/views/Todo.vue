@@ -2,12 +2,12 @@
   <v-col>
     <v-card elevation="0" class="todo px-35 py-8 ma-auto rounded-xl white">
       <Logo class="mb-12" />
-      <v-card-title class="todo__title mb-13 text-center">
+      <v-card-title class="todo__title mb-13 pa-0 justify-center">
         Today I need to
       </v-card-title>
       <TodoInput class="mb-10 px-5" />
       <TodoList class="mb-8" />
-      <v-container class="todo__progress-container px-5 py-0">
+      <v-container class="todo__progress-container px-5 py-0 mb-8">
         <v-row class="todo__progress-row no-gutters justify-space-between">
           <v-col class="todo__progress-col">
             <ProgressInfo :indicatorColor="'purple'" />
@@ -17,7 +17,9 @@
           </v-col>
         </v-row>
       </v-container>
-      <TodoButtons />
+      <v-container class="todo__buttons-container px-5 py-0">
+        <ButtonsPanel :buttonsList="buttonsList" />
+      </v-container>
     </v-card>
   </v-col>
 </template>
@@ -27,7 +29,7 @@ import Logo from "@/components/Logo";
 import TodoInput from "@/components/todo/TodoInput";
 import TodoList from "@/components/todo/TodoList";
 import ProgressInfo from "@/components/ProgressInfo";
-import TodoButtons from "@/components/todo/TodoButtons";
+import ButtonsPanel from "@/components/ButtonsPanel";
 
 export default {
   name: "Todo",
@@ -36,7 +38,38 @@ export default {
     TodoInput,
     TodoList,
     ProgressInfo,
-    TodoButtons,
+    ButtonsPanel,
+  },
+  data() {
+    return {
+      buttonsList: [
+        {
+          id: 1,
+          name: "Check all",
+          isActive: false,
+        },
+        {
+          id: 2,
+          name: "All",
+          isActive: true,
+        },
+        // {
+        //   id: 3,
+        //   name: "Active",
+        //   isActive: false,
+        // },
+        // {
+        //   id: 4,
+        //   name: "Completed",
+        //   isActive: false,
+        // },
+        {
+          id: 5,
+          name: "Clear completed",
+          isActive: false,
+        },
+      ],
+    };
   },
 };
 </script>
