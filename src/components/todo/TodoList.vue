@@ -1,9 +1,9 @@
 <template>
   <div class="todo-list">
     <v-list class="todo-list__items pa-0 overflow-y-auto" max-height="85">
-      <draggable handle=".handle" v-model="tasks">
+      <draggable handle=".handle" v-model="items">
         <transition-group>
-          <TodoTask v-for="task in tasks" :key="task.key" :item="task" />
+          <TodoTask v-for="item in items" :key="item.key" :item="item" />
         </transition-group>
       </draggable>
     </v-list>
@@ -20,32 +20,38 @@ export default {
     TodoTask,
     draggable,
   },
-  data() {
-    return {
-      tasks: [
-        {
-          key: 1,
-          text: "qweqweq",
-          completed: false,
-        },
-        {
-          key: 2,
-          text: "rtyrty",
-          completed: false,
-        },
-        {
-          key: 3,
-          text: "asdasd",
-          completed: true,
-        },
-        {
-          key: 4,
-          text: "zxczxc",
-          completed: true,
-        },
-      ],
-    };
+  props: {
+    items: {
+      type: Array,
+      default: () => [],
+    },
   },
+  // data() {
+  //   return {
+  //     items: [
+  //       {
+  //         key: 1,
+  //         text: "qweqweq",
+  //         completed: false,
+  //       },
+  //       {
+  //         key: 2,
+  //         text: "rtyrty",
+  //         completed: false,
+  //       },
+  //       {
+  //         key: 3,
+  //         text: "asdasd",
+  //         completed: true,
+  //       },
+  //       {
+  //         key: 4,
+  //         text: "zxczxc",
+  //         completed: true,
+  //       },
+  //     ],
+  //   };
+  // },
 };
 </script>
 

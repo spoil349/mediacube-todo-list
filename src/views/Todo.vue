@@ -6,7 +6,7 @@
         Today I need to
       </v-card-title>
       <TodoInput class="mb-10 px-5" />
-      <TodoList class="mb-8" />
+      <TodoList class="mb-8" :items="allTodos" />
       <v-container class="todo__progress-container px-5 py-0 mb-8">
         <v-row class="todo__progress-row no-gutters justify-space-between">
           <v-col class="todo__progress-col">
@@ -30,6 +30,7 @@ import TodoInput from "@/components/todo/TodoInput";
 import TodoList from "@/components/todo/TodoList";
 import ProgressInfo from "@/components/ProgressInfo";
 import ButtonsPanel from "@/components/ButtonsPanel";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "Todo",
@@ -70,6 +71,15 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    ...mapActions(["fetchTodos"]),
+  },
+  async mounted() {
+    this.fetchTodos();
+  },
+  computed: {
+    ...mapGetters(["allTodos"]),
   },
 };
 </script>
