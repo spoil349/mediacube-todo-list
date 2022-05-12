@@ -5,7 +5,9 @@
       <v-card-title class="todo__title mb-13 pa-0 justify-center">
         Today I need to
       </v-card-title>
-      <TodoInput class="mb-10 px-5" />
+      <v-container class="mb-10 px-5 py-0">
+        <ValueForm v-model="newTodoText" @inputSubmit="addNewTodo()" />
+      </v-container>
       <TodoList class="mb-8" :items="allTodos" />
       <v-container class="todo__progress-container px-5 py-0 mb-8">
         <v-row class="todo__progress-row no-gutters justify-space-between">
@@ -26,23 +28,26 @@
 
 <script>
 import Logo from "@/components/Logo";
-import TodoInput from "@/components/todo/TodoInput";
+import ValueForm from "@/components/ValueForm";
 import TodoList from "@/components/todo/TodoList";
 import ProgressInfo from "@/components/ProgressInfo";
 import ButtonsPanel from "@/components/ButtonsPanel";
 import { mapActions, mapGetters } from "vuex";
 
+import { v1 as uuidV1 } from "uuid";
+
 export default {
   name: "Todo",
   components: {
     Logo,
-    TodoInput,
+    ValueForm,
     TodoList,
     ProgressInfo,
     ButtonsPanel,
   },
   data() {
     return {
+      newTodoText: "",
       buttonsList: [
         {
           id: 1,
@@ -73,7 +78,19 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["fetchTodos"]),
+    ...mapActions(["fetchTodos", "addTodo"]),
+    addNewTodo() {
+      const todoText = this.newTodoText.trim();
+      if (todoText) {
+        const todo = {
+          key: uuidV1(),
+          text: todoText,
+          completed: false,
+        };
+        this.addTodo(todo);
+        this.newTodoText = "";
+      }
+    },
   },
   async mounted() {
     this.fetchTodos();
