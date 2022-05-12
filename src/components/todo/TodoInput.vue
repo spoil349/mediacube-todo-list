@@ -1,23 +1,46 @@
 <template>
-  <div class="todo-input">
+  <v-form class="todo-input" @submit.prevent="submit">
     <input
       class="todo-input__input rounded-lg pa-3"
       type="text"
       placeholder="Type something..."
+      v-model="todoText"
     />
     <v-btn
       class="todo-input__btn primary rounded-lg"
       elevation="0"
       height="100%"
+      type="submit"
     >
       Submit
     </v-btn>
-  </div>
+  </v-form>
 </template>
 
 <script>
+import { mapActions } from "vuex";
+import { v1 as uuidV1 } from "uuid";
 export default {
   name: "TodoInput",
+  data() {
+    return {
+      todoText: "",
+    };
+  },
+  methods: {
+    ...mapActions(["addTodo"]),
+    submit() {
+      if (this.todoText !== "") {
+        const todo = {
+          key: uuidV1(),
+          text: this.todoText.trim(),
+          completed: false,
+        };
+        this.addTodo(todo);
+        this.todoText = "";
+      }
+    },
+  },
 };
 </script>
 

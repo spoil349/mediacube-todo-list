@@ -26,32 +26,6 @@ export default {
       default: () => [],
     },
   },
-  // data() {
-  //   return {
-  //     items: [
-  //       {
-  //         key: 1,
-  //         text: "qweqweq",
-  //         completed: false,
-  //       },
-  //       {
-  //         key: 2,
-  //         text: "rtyrty",
-  //         completed: false,
-  //       },
-  //       {
-  //         key: 3,
-  //         text: "asdasd",
-  //         completed: true,
-  //       },
-  //       {
-  //         key: 4,
-  //         text: "zxczxc",
-  //         completed: true,
-  //       },
-  //     ],
-  //   };
-  // },
 };
 </script>
 

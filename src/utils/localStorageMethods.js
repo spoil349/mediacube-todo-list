@@ -4,7 +4,16 @@ export default {
     return res ? JSON.parse(res) : [];
   },
   SET_LOCALSTORAGE_DATA: function (poleName, data) {
-    const formattedData = JSON.stringify(data);
-    localStorage.setItem(poleName, formattedData);
+    const localStorageData = JSON.parse(localStorage.getItem(poleName));
+    if (Array.isArray(localStorageData) && localStorageData.length !== 0) {
+      localStorageData.unshift(data);
+      const newData = JSON.stringify(localStorageData);
+      localStorage.setItem(poleName, newData);
+      return localStorageData;
+    } else {
+      const newData = JSON.stringify([data]);
+      localStorage.setItem(poleName, newData);
+      return JSON.parse(localStorage.getItem(poleName));
+    }
   },
 };

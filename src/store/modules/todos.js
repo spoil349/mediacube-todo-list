@@ -15,9 +15,8 @@ export default {
 
       commit("updateTodos", todos);
     },
-    setTodos({ commit }, todos) {
-      localStorageMethods.SET_LOCALSTORAGE_DATA("todos", todos);
-
+    addTodo({ commit }, todo) {
+      const todos = localStorageMethods.SET_LOCALSTORAGE_DATA("todos", todo);
       commit("updateTodos", todos);
     },
   },
