@@ -3,7 +3,7 @@ export default {
     const res = localStorage.getItem(poleName);
     return res ? JSON.parse(res) : [];
   },
-  SET_LOCALSTORAGE_DATA: function (poleName, data) {
+  ADD_ITEM_LOCALSTORAGE_DATA: function (poleName, data) {
     const localStorageData = JSON.parse(localStorage.getItem(poleName));
     if (Array.isArray(localStorageData) && localStorageData.length !== 0) {
       localStorageData.unshift(data);
@@ -15,5 +15,10 @@ export default {
       localStorage.setItem(poleName, newData);
       return JSON.parse(localStorage.getItem(poleName));
     }
+  },
+  REWRITE_LOCALSTORAGE_DATA: function (poleName, data) {
+    const newData = JSON.stringify(data);
+    localStorage.setItem(poleName, newData);
+    return JSON.parse(localStorage.getItem(poleName));
   },
 };

@@ -1,7 +1,7 @@
 <template>
   <div class="todo-list">
     <v-list class="todo-list__items pa-0 overflow-y-auto" max-height="85">
-      <draggable handle=".handle" v-model="items">
+      <draggable handle=".handle" :list="items" @end="dragEndHandler">
         <transition-group>
           <TodoTask v-for="item in items" :key="item.key" :item="item" />
         </transition-group>
@@ -24,6 +24,11 @@ export default {
     items: {
       type: Array,
       default: () => [],
+    },
+  },
+  methods: {
+    dragEndHandler() {
+      this.$emit("dragEnd", this.items);
     },
   },
 };

@@ -16,7 +16,17 @@ export default {
       commit("updateTodos", todos);
     },
     addTodo({ commit }, todo) {
-      const todos = localStorageMethods.SET_LOCALSTORAGE_DATA("todos", todo);
+      const todos = localStorageMethods.ADD_ITEM_LOCALSTORAGE_DATA(
+        "todos",
+        todo
+      );
+      commit("updateTodos", todos);
+    },
+    rewriteTodoList({ commit }, todoList) {
+      const todos = localStorageMethods.REWRITE_LOCALSTORAGE_DATA(
+        "todos",
+        todoList
+      );
       commit("updateTodos", todos);
     },
   },
