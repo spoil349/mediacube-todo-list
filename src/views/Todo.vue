@@ -5,8 +5,12 @@
       <v-card-title class="todo__title mb-13 pa-0 justify-center">
         Today I need to
       </v-card-title>
-      <v-container class="mb-10 px-5 py-0">
-        <ValueForm v-model="newTodoText" @inputSubmit="addNewTodo()" />
+      <v-container class="todo__input-container mb-10 px-5 py-0">
+        <ValueForm
+          v-model="newTodoText"
+          @inputSubmit="addNewTodo()"
+          :label="todoInputLabel"
+        />
       </v-container>
       <TodoList class="mb-8" :items="allTodos" />
       <v-container class="todo__progress-container px-5 py-0 mb-8">
@@ -47,6 +51,7 @@ export default {
   },
   data() {
     return {
+      todoInputLabel: "Todo text",
       newTodoText: "",
       buttonsList: [
         {
@@ -80,15 +85,17 @@ export default {
   methods: {
     ...mapActions(["fetchTodos", "addTodo"]),
     addNewTodo() {
-      const todoText = this.newTodoText.trim();
-      if (todoText) {
-        const todo = {
-          key: uuidV1(),
-          text: todoText,
-          completed: false,
-        };
-        this.addTodo(todo);
-        this.newTodoText = "";
+      if (this.newTodoText) {
+        const todoText = this.newTodoText.trim();
+        if (todoText) {
+          const todo = {
+            key: uuidV1(),
+            text: todoText,
+            completed: false,
+          };
+          this.addTodo(todo);
+          this.newTodoText = "";
+        }
       }
     },
   },

@@ -1,12 +1,23 @@
 <template>
-  <v-form class="value-form" @submit.prevent="$emit('inputSubmit')">
-    <input
-      class="value-form__input rounded-lg pa-3"
-      type="text"
-      placeholder="Type something..."
+  <v-form
+    class="value-form"
+    ref="form"
+    v-model="valid"
+    lazy-validation
+    @submit.prevent="handleSubmit"
+  >
+    <v-text-field
+      class="value-form__text ma-0 pa-0 rounded-lg"
+      clearable
+      outlined
+      dense
+      hide-details="true"
       :value="text"
-      @input="$emit('input', $event.target.value)"
-    />
+      :label="label"
+      :rules="inputRules"
+      required
+      @input="$emit('input', $event)"
+    ></v-text-field>
     <v-btn
       class="value-form__btn primary rounded-lg"
       elevation="0"
@@ -25,6 +36,25 @@ export default {
     text: {
       type: String,
       default: () => "",
+    },
+    label: {
+      type: String,
+      default: () => "Type something...",
+    },
+  },
+  data() {
+    return {
+      valid: true,
+      inputRules: [(v) => !!v || "Is required"],
+    };
+  },
+  methods: {
+    handleSubmit() {
+      const isFormValid = this.$refs.form.validate();
+      if (isFormValid) {
+        this.$emit("inputSubmit");
+        this.$refs.form.reset();
+      }
     },
   },
 };
