@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     dragEndHandler() {
-      this.$emit("dragEnd", this.items);
+      this.$emit("dragEnd");
     },
   },
 };

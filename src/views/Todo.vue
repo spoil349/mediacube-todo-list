@@ -12,7 +12,11 @@
           :label="todoInputLabel"
         />
       </v-container>
-      <TodoList class="mb-8" :items="allTodos" @dragEnd="dragEndHandler" />
+      <TodoList
+        class="mb-8"
+        :items="allTodos"
+        @dragEnd="rewriteTodoList(allTodos)"
+      />
       <v-container class="todo__progress-container px-5 py-0 mb-8">
         <v-row class="todo__progress-row no-gutters justify-space-between">
           <v-col class="todo__progress-col">
