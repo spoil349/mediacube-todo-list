@@ -1,3 +1,13 @@
 .v-list-item {
     min-height: unset;
 }
+
+.no-ripple {
+    &:before {
+        opacity: 0 !important;
+    }
+
+    .v-ripple__container {
+        opacity: 0 !important;
+    }
+}

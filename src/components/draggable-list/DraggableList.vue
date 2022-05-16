@@ -2,7 +2,9 @@
   <v-list class="pa-0 overflow-y-auto" :max-height="listHeight">
     <draggable handle=".drag-btn" :value="items" @change="dragHandler">
       <transition-group>
-        <DraggableListItem v-for="item in items" :key="item.key" :item="item" />
+        <DraggableListItem v-for="item in items" :key="item.key" :item="item">
+          <slot :item="item"></slot>
+        </DraggableListItem>
       </transition-group>
     </draggable>
   </v-list>

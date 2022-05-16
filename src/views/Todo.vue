@@ -17,7 +17,11 @@
           :listHeight="'85'"
           :items="allTodos"
           @dragEvent="rewriteTodoList"
-        />
+        >
+          <template v-slot="{ item }">
+            <TodoListItem :item="item" />
+          </template>
+        </DraggableList>
       </v-container>
       <v-container class="todo__progress-container px-5 py-0 mb-8">
         <v-row class="todo__progress-row no-gutters justify-space-between">
@@ -42,6 +46,7 @@ import ValueForm from "@/components/ValueForm";
 import DraggableList from "@/components/draggable-list/DraggableList";
 import ProgressInfo from "@/components/ProgressInfo";
 import ButtonsPanel from "@/components/ButtonsPanel";
+import TodoListItem from "@/components/TodoListItem";
 import { mapActions, mapGetters } from "vuex";
 
 import { v1 as uuidV1 } from "uuid";
@@ -54,6 +59,7 @@ export default {
     DraggableList,
     ProgressInfo,
     ButtonsPanel,
+    TodoListItem,
   },
   data() {
     return {
