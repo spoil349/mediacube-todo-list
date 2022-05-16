@@ -1,1 +1,6 @@
+@import "./ui.scss";
 @import "./variables.scss";
+
+* {
+    @include small-scrollbar;
+}
