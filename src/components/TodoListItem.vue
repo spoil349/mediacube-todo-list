@@ -58,11 +58,7 @@ export default {
   methods: {
     toggleEditingMode() {
       this.editingMode = !this.editingMode;
-      setTimeout(() => {
-        if (this.$refs.input) {
-          this.$refs.input.focus();
-        }
-      }, 0);
+      this.$nextTick().then(this.$refs.input.focus());
     },
   },
 };
